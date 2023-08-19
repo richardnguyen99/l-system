@@ -29,7 +29,7 @@ LSystemDrawer::LSystemDrawer(QObject *parent)
 {
     QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
 
-    this->m_state = LSystemDrawer::STATE::READY;
+    this->m_state = LSystemDrawer::STATE::UNAVAILABLE;
 
     qDebug() << "[INFO] LSystemDrawer::LSystemDrawer(" << parent << ") successfully";
 }
@@ -67,6 +67,33 @@ QString LSystemDrawer::getStateString() const
     default:
         return "Unavailable";
     }
+}
+
+void LSystemDrawer::load(QQuickItem *drawer)
+{
+    this->m_drawer = drawer;
+    this->setState(STATE::READY);
+
+    QJSValue context = drawer->property("context").value<QJSValue>();
+
+    qDebug() << "[INFO] LSystemDrawer::load(" << drawer << ") successfully";
+    qDebug() << "[INFO] LSystemDrawer::load(" << context.property("fillStyle").toString()
+             << ") successfully";
+
+    context.setProperty("lineWidth", QJSValue(2));
+    context.setProperty("lineCap", QJSValue("round"));
+    context.setProperty("strokeStyle", QJSValue("#000000"));
+
+    context.property("beginPath").callWithInstance(context);
+
+    context.property("moveTo").callWithInstance(context,
+                                                QJSValueList({QJSValue(100), QJSValue(100)}));
+
+    context.property("lineTo").callWithInstance(context,
+                                                QJSValueList({QJSValue(200), QJSValue(200)}));
+
+    context.property("closePath").callWithInstance(context);
+    context.property("stroke").callWithInstance(context);
 }
 
 void LSystemDrawer::setState(LSystemDrawer::State newState)

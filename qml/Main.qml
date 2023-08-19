@@ -34,13 +34,24 @@ ApplicationWindow {
     width: minWidth
     height: minHeight
     visible: true
-    title: qsTr("L-System Rewriting Program (" + LSystemDrawer.getStateString(
-                    ) + ") - Richard H. Nguyen")
+    title: getTitle(LSystemDrawer.getStateString())
 
     LSCanvas {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
         anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Connections {
+        target: LSystemDrawer
+
+        function onStateChanged(newState) {
+            title = getTitle(LSystemDrawer.getStateString())
+        }
+    }
+
+    function getTitle(stateString) {
+        return `L-System Rewriting Program (${stateString}) - Richard H. Nguyen`
     }
 }

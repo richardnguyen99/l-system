@@ -23,6 +23,8 @@
  */
 import QtQuick
 
+import LSystem 1.0
+
 Canvas {
     id: lsCanvas
 
@@ -35,5 +37,19 @@ Canvas {
         var ctx = getContext("2d")
         ctx.fillStyle = Qt.rgba(255, 255, 255, 1)
         ctx.fillRect(0, 0, width, height)
+        LSystemDrawer.load(this)
+    }
+
+    onPaint: {
+        console.log("painting")
+        var ctx = getContext("2d")
+    }
+
+    Connections {
+        target: LSystemDrawer
+
+        function onStateChanged(newState) {
+            console.log("state changed")
+        }
     }
 }

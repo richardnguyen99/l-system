@@ -28,7 +28,12 @@ class LSystemDrawer;
 /* Qt Core Libraries */
 #include <QDebug>
 #include <QGuiApplication>
+#include <QJsonObject>
+#include <QMetaObject>
 #include <QQmlApplicationEngine>
+#include <QQuickItem>
+#include <QString>
+#include <QVariant>
 
 /* Core drawer engines */
 #include <LSystemDrawer.h>

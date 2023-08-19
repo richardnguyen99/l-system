@@ -54,6 +54,7 @@ public:
     State state() const;
 
     Q_INVOKABLE QString getStateString() const;
+    Q_INVOKABLE void load(QQuickItem *drawer);
 
 public slots:
     void setState(State newState);
@@ -63,6 +64,7 @@ signals:
 
 private:
     State m_state;
+    QQuickItem *m_drawer;
 };
 
 #endif /* _LSYSTEM_DRAWER_H */
