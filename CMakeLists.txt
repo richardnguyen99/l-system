@@ -27,6 +27,8 @@ project(l-system VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
 
+add_compile_definitions(QT_USE_STRING_BUILDER)
+
 # Enable auto config for QRC and MOC files
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -42,6 +44,7 @@ find_package(
 
 # Set the implementation source files
 set(SOURCES
+    src/LSystemPoint.cpp
     src/LSystemDrawer.cpp
 )
 
@@ -49,6 +52,7 @@ set(SOURCES
 set(HEADERS
     include/LSystemCore.h
     include/LSystemDrawer.h
+    include/LSystemPoint.h
 )
 
 # Set the QML files

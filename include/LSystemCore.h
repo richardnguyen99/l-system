@@ -23,19 +23,30 @@
 #ifndef _LSYSTEM_CORE_INCLUDED_
 #define _LSYSTEM_CORE_INCLUDED_ 1
 
+enum LSystemCommand { FORWARD, FORWARD2, IGNORE, RIGHT, LEFT, PUSH, POP };
+
 class LSystemDrawer;
+class LSystemPoint;
 
 /* Qt Core Libraries */
 #include <QDebug>
 #include <QGuiApplication>
 #include <QJsonObject>
 #include <QMetaObject>
+#include <QPoint>
 #include <QQmlApplicationEngine>
+#include <QQueue>
 #include <QQuickItem>
+#include <QStack>
 #include <QString>
+#include <QStringBuilder>
 #include <QVariant>
+#include <QtMath>
+
+// clang-format off
 
 /* Core drawer engines */
+#include <LSystemPoint.h>
 #include <LSystemDrawer.h>
 
 #endif /* _LSYSTEM_CORE_INCLUDED_ */

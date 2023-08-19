@@ -46,18 +46,20 @@ public:
     Q_DISABLE_COPY(LSystemDrawer)
 
 public:
-    explicit LSystemDrawer(QObject *parent = nullptr);
+    explicit LSystemDrawer(QObject *parent = nullptr) noexcept;
     ~LSystemDrawer() override;
 
     static QObject *qmlInstance(QQmlEngine *engine, QJSEngine *scriptEngine);
 
-    State state() const;
+    State state() const noexcept;
 
-    Q_INVOKABLE QString getStateString() const;
+    Q_INVOKABLE QString getStateString() const noexcept;
+    Q_INVOKABLE QString queueToString() const noexcept;
+
     Q_INVOKABLE void load(QQuickItem *drawer);
 
 public slots:
-    void setState(State newState);
+    void setState(State newState) noexcept;
 
 signals:
     void stateChanged(State newState);
@@ -65,6 +67,10 @@ signals:
 private:
     State m_state;
     QQuickItem *m_drawer;
+
+    QStack<LSystemCommand> m_stack;
+    QQueue<LSystemCommand> m_queue;
+    LSystemPoint m_point;
 };
 
 #endif /* _LSYSTEM_DRAWER_H */

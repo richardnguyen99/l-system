@@ -24,7 +24,7 @@
 
 Q_GLOBAL_STATIC(LSystemDrawer, __LSystemDrawerSingleton)
 
-LSystemDrawer::LSystemDrawer(QObject *parent)
+LSystemDrawer::LSystemDrawer(QObject *parent) noexcept
     : QObject(parent)
 {
     QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
@@ -47,25 +47,27 @@ QObject *LSystemDrawer::qmlInstance(QQmlEngine *engine, QJSEngine *scriptEngine)
     return __LSystemDrawerSingleton();
 }
 
-LSystemDrawer::State LSystemDrawer::state() const
+LSystemDrawer::State LSystemDrawer::state() const noexcept
 {
     return m_state;
 }
 
-QString LSystemDrawer::getStateString() const
+QString LSystemDrawer::getStateString() const noexcept
 {
+    using namespace Qt::StringLiterals;
+
     switch (this->m_state) {
     case STATE::READY:
-        return "Ready";
+        return u"Ready"_s;
     case STATE::DRAWING:
-        return "Drawing";
+        return u"Drawing"_s;
     case STATE::PAUSED:
-        return "Paused";
+        return u"Paused"_s;
     case STATE::DONE:
-        return "Done";
+        return u"Done"_s;
     case STATE::UNAVAILABLE:
     default:
-        return "Unavailable";
+        return u"Unavailable"_s;
     }
 }
 
@@ -96,7 +98,14 @@ void LSystemDrawer::load(QQuickItem *drawer)
     context.property("stroke").callWithInstance(context);
 }
 
-void LSystemDrawer::setState(LSystemDrawer::State newState)
+QString LSystemDrawer::queueToString() const noexcept
+{
+    using namespace Qt::StringLiterals;
+
+    return u"Some string"_s;
+}
+
+void LSystemDrawer::setState(LSystemDrawer::State newState) noexcept
 {
     if (m_state == newState)
         return;
