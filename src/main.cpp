@@ -20,7 +20,7 @@
  * Written by Richard H. Nguyen <richard@richardhnguyen.com>
  */
 
-#include <ls_core.h>
+#include <lsys_core.h>
 
 int main(int argc, char *argv[])
 {

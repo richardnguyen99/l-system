@@ -47,17 +47,21 @@ set(SOURCES
 
 # Set the header files
 set(HEADERS
-    include/ls_core.h
+    include/lsys_core.h
 )
 
 # Set the QML files
 set(QML
     qml/Main.qml
+    qml/LSCanvas.qml
 )
 
+# The logic of the project will be built into one binary object, `lsystemapp`.
+# Then, the main will link it to build a complete executable
 add_library(lsystemapp STATIC)
 target_include_directories(lsystemapp PUBLIC src/ include)
 
+# Add necessary files to the library
 qt_add_qml_module(lsystemapp
     URI lsystemapp
     VERSION
@@ -70,6 +74,7 @@ qt_add_qml_module(lsystemapp
     RESOURCES lsystem.qrc
 )
 
+# Link the object with Qt Core libraries
 target_link_libraries(lsystemapp
     PUBLIC 	Qt6::Quick
             Qt6::Gui
@@ -79,10 +84,12 @@ target_link_libraries(lsystemapp
 
 qt_standard_project_setup()
 
+# The main executable of the L-System Project
 qt_add_executable(lsystem
     src/main.cpp
 )
 
+# Link with `lsystemapp` to create a complet app
 target_link_libraries(lsystem PRIVATE lsystemapp)
 
 target_include_directories(lsystemapp

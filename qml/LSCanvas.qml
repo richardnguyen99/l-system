@@ -1,4 +1,4 @@
-// Main entry for the QML module used in the L-System Project
+// Canvas component to draw in the L-System Project
 // Copyright (C) 2023 Richard H. Nguyen
 //
 // This file is a part of the L-System Project
@@ -19,23 +19,18 @@
 // Written by Richard H. Nguyen <richard@richardhnguyen.com>
 
 import QtQuick
-import QtQuick.Controls
 
-ApplicationWindow {
-    id: rootWindow
+Canvas {
+    id: lsCanvas
 
-    property int minWidth: 640
-    property int minHeight: 480
+    width: rootWindow.minWidth
 
-    width: minWidth
-    height: minHeight
-    visible: true
-    title: qsTr("L-System Rewriting Program - Richard H. Nguyen")
+    onAvailableChanged: {
+        if (!available)
+            return;
 
-    LSCanvas {
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-
-        anchors.horizontalCenter: parent.horizontalCenter
+        var ctx = getContext("2d");
+        ctx.fillStyle = Qt.rgba(255, 255, 255, 1);
+        ctx.fillRect(0, 0, width, height)
     }
 }
