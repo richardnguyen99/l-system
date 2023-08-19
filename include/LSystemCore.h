@@ -20,13 +20,17 @@
  * Written by Richard H. Nguyen <richard@richardhnguyen.com>
  */
 
-#pragma once
-
 #ifndef _LSYSTEM_CORE_INCLUDED_
 #define _LSYSTEM_CORE_INCLUDED_ 1
 
+class LSystemDrawer;
+
 /* Qt Core Libraries */
+#include <QDebug>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+
+/* Core drawer engines */
+#include <LSystemDrawer.h>
 
 #endif /* _LSYSTEM_CORE_INCLUDED_ */

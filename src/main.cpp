@@ -20,7 +20,7 @@
  * Written by Richard H. Nguyen <richard@richardhnguyen.com>
  */
 
-#include <lsys_core.h>
+#include <LSystemCore.h>
 
 int main(int argc, char *argv[])
 {
@@ -28,6 +28,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/lsystemapp/qml/Main.qml"_qs);
+
+    qmlRegisterSingletonType<LSystemDrawer>("LSystem",
+                                            1,
+                                            0,
+                                            "LSystemDrawer",
+                                            &LSystemDrawer::qmlInstance);
 
     QObject::connect(
         &engine,

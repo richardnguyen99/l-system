@@ -42,12 +42,13 @@ find_package(
 
 # Set the implementation source files
 set(SOURCES
-    # src/app.cpp
+    src/LSystemDrawer.cpp
 )
 
 # Set the header files
 set(HEADERS
-    include/lsys_core.h
+    include/LSystemCore.h
+    include/LSystemDrawer.h
 )
 
 # Set the QML files
