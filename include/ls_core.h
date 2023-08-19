@@ -1,8 +1,8 @@
-/*
+/*!
  * Core header for the L-System rewriting software
- * Copyright (C) 2023 Richard Nguyen
+ * Copyright (C) 2023 Richard H. Nguyen
  * 
- * This file is a part of the L-System Rewriting Project
+ * This file is a part of the L-System Project
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -16,6 +16,8 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * this program.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Written by Richard H. Nguyen <richard@richardhnguyen.com>
  */
 
 #pragma once
