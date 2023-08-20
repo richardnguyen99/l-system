@@ -71,7 +71,7 @@ QString LSystemDrawer::getStateString() const noexcept
     }
 }
 
-void LSystemDrawer::load(QQuickItem *drawer)
+void LSystemDrawer::load(QQuickItem *drawer) noexcept
 {
     this->m_drawer = drawer;
     this->setState(STATE::READY);
@@ -103,6 +103,26 @@ QString LSystemDrawer::queueToString() const noexcept
     using namespace Qt::StringLiterals;
 
     return u"Some string"_s;
+}
+
+void LSystemDrawer::queueFromString(const QString &s) noexcept
+{
+    QString::const_iterator it;
+    QChar qc;
+    LSystemCommand command;
+
+    for (it = s.constBegin(); it != s.constEnd(); ++it) {
+        qc = *it;
+
+        switch (qc.toLatin1()) {
+        case 'F':
+            command = LSystemCommand::FORWARD;
+            break;
+        case 'X':
+        default:
+            break;
+        }
+    }
 }
 
 void LSystemDrawer::setState(LSystemDrawer::State newState) noexcept

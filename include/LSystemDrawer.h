@@ -56,7 +56,8 @@ public:
     Q_INVOKABLE QString getStateString() const noexcept;
     Q_INVOKABLE QString queueToString() const noexcept;
 
-    Q_INVOKABLE void load(QQuickItem *drawer);
+    Q_INVOKABLE void load(QQuickItem *drawer) noexcept;
+    Q_INVOKABLE void queueFromString(const QString &str) noexcept;
 
 public slots:
     void setState(State newState) noexcept;

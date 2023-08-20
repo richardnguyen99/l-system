@@ -46,6 +46,9 @@ find_package(
 set(SOURCES
     src/LSystemPoint.cpp
     src/LSystemDrawer.cpp
+    src/LSystemQueue.cpp
+    src/LSystemStack.cpp
+    src/LSystemRewriter.cpp
 )
 
 # Set the header files
@@ -53,6 +56,9 @@ set(HEADERS
     include/LSystemCore.h
     include/LSystemDrawer.h
     include/LSystemPoint.h
+    include/LSystemQueue.h
+    include/LSystemStack.h
+    include/LSystemRewriter.h
 )
 
 # Set the QML files

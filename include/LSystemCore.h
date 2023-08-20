@@ -27,6 +27,9 @@ enum LSystemCommand { FORWARD, FORWARD2, IGNORE, RIGHT, LEFT, PUSH, POP };
 
 class LSystemDrawer;
 class LSystemPoint;
+class LSystemQueue;
+class LSystemStack;
+class LSystemRewriter;
 
 /* Qt Core Libraries */
 #include <QDebug>
@@ -47,6 +50,9 @@ class LSystemPoint;
 
 /* Core drawer engines */
 #include <LSystemPoint.h>
+#include <LSystemQueue.h>
+#include <LSystemStack.h>
+#include <LSystemRewriter.h>
 #include <LSystemDrawer.h>
 
 #endif /* _LSYSTEM_CORE_INCLUDED_ */
